@@ -77,6 +77,10 @@ class GameFunctions final : LuaScriptInterface {
 				registerMethod(L, "Game", "hasDistanceEffect", GameFunctions::luaGameHasDistanceEffect);
 				registerMethod(L, "Game", "hasEffect", GameFunctions::luaGameHasEffect);
 				registerMethod(L, "Game", "getOfflinePlayer", GameFunctions::luaGameGetOfflinePlayer);
+				
+				registerMethod(L, "Game", "pack", GameFunctions::luaTablePack);
+				
+				registerMethod(L, "Game", "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
 			}
 
 	private:
@@ -128,6 +132,8 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameGetOfflinePlayer(lua_State* L);
 			static int luaGameHasEffect(lua_State* L);
 			static int luaGameHasDistanceEffect(lua_State* L);
+			static int luaTablePack(lua_State* L);
+			static int luaIsScriptsInterface(lua_State* L);
 };
 
 #endif  // SRC_LUA_FUNCTIONS_CORE_GAME_GAME_FUNCTIONS_HPP_
