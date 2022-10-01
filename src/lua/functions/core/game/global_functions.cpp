@@ -107,7 +107,7 @@ int GlobalFunctions::luaDoPlayerAddItem(lua_State* L) {
 int GlobalFunctions::luaIsScriptsInterface(lua_State* L)
 {
 	//isScriptsInterface()
-	if (getScriptEnv()->getScriptInterface() == &env->getScriptInterface()) {
+	if (getScriptEnv()->getScriptInterface() == &g_scripts().getScriptInterface()) {	
 		pushBoolean(L, true);
 	} else {
 		reportErrorFunc("EventCallback: can only be called inside (data/scripts/)");
