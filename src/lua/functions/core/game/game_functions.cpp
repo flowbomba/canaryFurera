@@ -604,7 +604,7 @@ int GameFunctions::luaGameHasDistanceEffect(lua_State* L) {
 	return 1;
 }
 
-int LuaScriptInterface::luaIsScriptsInterface(lua_State* L)
+int GameFunctions::luaIsScriptsInterface(lua_State* L)
 {
 	//isScriptsInterface()
 	if (getScriptEnv()->getScriptInterface() == &g_scripts->getScriptInterface()) {
