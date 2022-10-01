@@ -28,9 +28,9 @@
 
 #include <limits>
 
-bool IOLoginData::authenticateAccountPassword(const std::string& email, const std::string& password, account::Account *account) {
-	if (account::ERROR_NO != account->LoadAccountDB(email)) {
-		SPDLOG_ERROR("Email {} doesn't match any account.", email);
+bool IOLoginData::authenticateAccountPassword(const std::string& accountIdentifier, const std::string& password, account::Account *account) {
+	if (account::ERROR_NO != account->LoadAccountDB(accountIdentifier)) {
+		SPDLOG_ERROR("{} {} doesn't match any account.", account->getProtocolCompat() ? "Username" : "Email", accountIdentifier);
 		return false;
 	}
 
@@ -44,10 +44,11 @@ bool IOLoginData::authenticateAccountPassword(const std::string& email, const st
 	return true;
 }
 
-bool IOLoginData::gameWorldAuthentication(const std::string& email, const std::string& password, std::string& characterName, uint32_t *accountId)
+bool IOLoginData::gameWorldAuthentication(const std::string& accountIdentifier, const std::string& password, std::string& characterName, uint32_t *accountId, bool oldProtocol)
 {
 	account::Account account;
-	if (!IOLoginData::authenticateAccountPassword(email, password, &account)) {
+	account.setProtocolCompat(oldProtocol);
+	if (!IOLoginData::authenticateAccountPassword(accountIdentifier, password, &account)) {
 		return false;
 	}
 
@@ -161,6 +162,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
   acc.SetDatabaseInterface(&db);
   acc.LoadAccountDB(accountId);
 
+  bool oldProtocol = g_configManager().getBoolean(OLD_PROTOCOL) && player->getProtocolVersion() < 1200;
   player->setGUID(result->getNumber<uint32_t>("id"));
   player->name = result->getString("name");
   acc.GetID(&(player->accountNumber));
@@ -492,9 +494,11 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 
       Container* itemContainer = item->getContainer();
       if (itemContainer) {
-        int64_t cid = item->getIntAttr(ITEM_ATTRIBUTE_OPENCONTAINER);
-        if (cid > 0) {
-          openContainersList.emplace_back(std::make_pair(cid, itemContainer));
+        if (!oldProtocol) {
+          int64_t cid = item->getIntAttr(ITEM_ATTRIBUTE_OPENCONTAINER);
+          if (cid > 0) {
+            openContainersList.emplace_back(std::make_pair(cid, itemContainer));
+          }
         }
         if (item->hasAttribute(ITEM_ATTRIBUTE_QUICKLOOTCONTAINER)) {
           int64_t flags = item->getIntAttr(ITEM_ATTRIBUTE_QUICKLOOTCONTAINER);
@@ -508,13 +512,15 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
     }
   }
 
-  std::sort(openContainersList.begin(), openContainersList.end(), [](const std::pair<uint8_t, Container*> &left, const std::pair<uint8_t, Container*> &right) {
-    return left.first < right.first;
-  });
+  if (!oldProtocol) {
+    std::sort(openContainersList.begin(), openContainersList.end(), [](const std::pair<uint8_t, Container*> &left, const std::pair<uint8_t, Container*> &right) {
+      return left.first < right.first;
+    });
 
-  for (auto& it : openContainersList) {
-    player->addContainer(it.first - 1, it.second);
-    player->onSendContainer(it.second);
+    for (auto& it : openContainersList) {
+      player->addContainer(it.first - 1, it.second);
+      player->onSendContainer(it.second);
+    }
   }
 
   // Store Inbox

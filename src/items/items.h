@@ -231,6 +231,8 @@ class ItemType
 		int32_t wrapableTo = 0;
 
 		CombatType_t combatType = COMBAT_NONE;
+		
+		ItemAnimation_t animationType = ANIMATION_NONE;
 
 		uint16_t transformToOnUse[2] = {0, 0};
 		uint16_t transformToFree = 0;
