@@ -1297,6 +1297,38 @@ void Events::eventOnStorageUpdate(Player* player, const uint32_t key, const int3
 	scriptInterface.callVoidFunction(5);
 }
 
+
+void Events::eventPlayerOnInventoryUpdate(Player* player, Item* item, slots_t slot, bool equip)
+{
+	// Player:onInventoryUpdate(item, slot, equip)
+	if (info.playerOnInventoryUpdate == -1) {
+		return;
+	}
+
+	if (!scriptInterface.reserveScriptEnv()) {
+		std::cout << "[Error - Events::eventPlayerOnInventoryUpdate] Call stack overflow" << std::endl;
+		return;
+	}
+
+	ScriptEnvironment* env = scriptInterface.getScriptEnv();
+	env->setScriptId(info.playerOnInventoryUpdate, &scriptInterface);
+
+	lua_State* L = scriptInterface.getLuaState();
+	scriptInterface.pushFunction(info.playerOnInventoryUpdate);
+
+	LuaScriptInterface::pushUserdata<Player>(L, player);
+	LuaScriptInterface::setMetatable(L, -1, "Player");
+
+	LuaScriptInterface::pushUserdata<Item>(L, item);
+	LuaScriptInterface::setItemMetatable(L, -1, item);
+
+	lua_pushnumber(L, slot);
+	LuaScriptInterface::pushBoolean(L, equip);
+
+	scriptInterface.callVoidFunction(4);
+}
+
+
 // Monster
 void Events::eventMonsterOnDropLoot(Monster* monster, Container* corpse) {
 	// Monster:onDropLoot(corpse)
