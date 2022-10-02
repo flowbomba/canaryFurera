@@ -28,6 +28,8 @@ class GameFunctions final : LuaScriptInterface {
 	public:
 			static void init(lua_State* L) {
 				registerTable(L, "Game");
+				
+				
 
 				registerMethod(L, "Game", "createNpcType", GameFunctions::luaGameCreateNpcType);
 				registerMethod(L, "Game", "createMonsterType", GameFunctions::luaGameCreateMonsterType);
@@ -73,6 +75,9 @@ class GameFunctions final : LuaScriptInterface {
 				registerMethod(L, "Game", "getClientVersion", GameFunctions::luaGameGetClientVersion);
 
 				registerMethod(L, "Game", "reload", GameFunctions::luaGameReload);
+				
+				lua_register(L, "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
+
 
 				registerMethod(L, "Game", "hasDistanceEffect", GameFunctions::luaGameHasDistanceEffect);
 				registerMethod(L, "Game", "hasEffect", GameFunctions::luaGameHasEffect);
@@ -124,6 +129,8 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameGetClientVersion(lua_State* L);
 
 			static int luaGameReload(lua_State* L);
+			
+			static int luaIsScriptsInterface(lua_State* L);
 
 			static int luaGameGetOfflinePlayer(lua_State* L);
 			static int luaGameHasEffect(lua_State* L);

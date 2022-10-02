@@ -604,6 +604,18 @@ int GameFunctions::luaGameHasDistanceEffect(lua_State* L) {
 	return 1;
 }
 
+int GameFunctions::luaIsScriptsInterface(lua_State* L)
+{
+	//isScriptsInterface()
+	if (getScriptEnv()->getScriptInterface() == &g_scripts->getScriptInterface()) {
+		pushBoolean(L, true);
+	} else {
+		reportErrorFunc("EventCallback: can only be called inside (data/scripts/)");
+		pushBoolean(L, false);
+	}
+	return 1;
+}
+
 int GameFunctions::luaGameGetOfflinePlayer(lua_State* L) {
 	uint32_t playerId = getNumber<uint32_t>(L,1);
 

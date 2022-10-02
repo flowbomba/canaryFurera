@@ -694,19 +694,6 @@ int GlobalFunctions::luaStopEvent(lua_State* L) {
 	return 1;
 }
 
-int GlobalFunctions::luaIsScriptsInterface(lua_State* L)
-{
-	//isScriptsInterface()
-	if (getScriptEnv()->getScriptInterface() == &g_scripts->getScriptInterface()) {
-		pushBoolean(L, true);
-	} else {
-		reportErrorFunc("EventCallback: can only be called inside (data/scripts/)");
-		pushBoolean(L, false);
-	}
-	return 1;
-}
-
-
 int GlobalFunctions::luaSaveServer(lua_State* L) {
 	g_game().saveGameState();
 	pushBoolean(L, true);

@@ -54,8 +54,6 @@ class GlobalFunctions final : LuaScriptInterface {
 			lua_register(L, "sendChannelMessage", GlobalFunctions::luaSendChannelMessage);
 			lua_register(L, "sendGuildChannelMessage", GlobalFunctions::luaSendGuildChannelMessage);
 			lua_register(L, "stopEvent", GlobalFunctions::luaStopEvent);
-			
-			lua_register(L, "isScriptsInterface", GlobalFunctions::luaIsScriptsInterface);
 
 			registerGlobalVariable(L, "INDEX_WHEREEVER", INDEX_WHEREEVER);
 			registerGlobalBoolean(L, "VIRTUAL_PARENT", true);
@@ -95,8 +93,6 @@ class GlobalFunctions final : LuaScriptInterface {
 		static int luaSendChannelMessage(lua_State* L);
 		static int luaSendGuildChannelMessage(lua_State* L);
 		static int luaStopEvent(lua_State* L);
-		static int luaIsScriptsInterface(lua_State* L);
-		
 		static int luaIsType(lua_State* L);
 		static int luaRawGetMetatable(lua_State* L);
 		static int luaCreateTable(lua_State* L);
