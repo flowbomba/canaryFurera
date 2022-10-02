@@ -76,7 +76,8 @@ class GameFunctions final : LuaScriptInterface {
 
 				registerMethod(L, "Game", "reload", GameFunctions::luaGameReload);
 				
-				registerMethod(L, "Game", "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
+				lua_register(L, "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
+				
 
 
 				registerMethod(L, "Game", "hasDistanceEffect", GameFunctions::luaGameHasDistanceEffect);

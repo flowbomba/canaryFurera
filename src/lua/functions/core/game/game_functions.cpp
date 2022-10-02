@@ -607,7 +607,7 @@ int GameFunctions::luaGameHasDistanceEffect(lua_State* L) {
 int GameFunctions::luaIsScriptsInterface(lua_State* L)
 {
 	//isScriptsInterface()
-	if (getScriptEnv()->getScriptInterface() == &g_scripts()->getScriptInterface()) {
+	if (getScriptEnv()->getScriptInterface() == &g_scripts().getScriptInterface()) {
 		pushBoolean(L, true);
 	} else {
 		reportErrorFunc("EventCallback: can only be called inside (data/scripts/)");
