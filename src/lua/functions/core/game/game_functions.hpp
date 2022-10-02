@@ -76,7 +76,9 @@ class GameFunctions final : LuaScriptInterface {
 
 				registerMethod(L, "Game", "reload", GameFunctions::luaGameReload);
 				
-				registerMethod(L, "Game", "pack", GameFunctions::luaTablePack);
+				
+				
+				registerMethod(L, "table", "pack", GameFunctions::luaTablePack);
 				
 				lua_register(L, "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
 				
