@@ -1298,7 +1298,7 @@ void Events::eventOnStorageUpdate(Player* player, const uint32_t key, const int3
 }
 
 
-void Events::eventPlayerOnInventoryUpdate(Player* player, Item* item, slots_t slot, bool equip)
+void Events::eventPlayerOnInventoryUpdate(Player* player, Item* item, Slots_t slot, bool equip)
 {
 	// Player:onInventoryUpdate(item, slot, equip)
 	if (info.playerOnInventoryUpdate == -1) {

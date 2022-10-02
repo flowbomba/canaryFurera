@@ -131,7 +131,7 @@ class Events {
 		void eventPlayerOnRequestQuestLine(Player* player, uint16_t questId);
 		void eventOnStorageUpdate(Player* player, const uint32_t key, const int32_t value, int32_t oldValue, uint64_t currentTime);
 		void eventPlayerOnCombat(Player* player, Creature* target, Item* item, CombatDamage& damage);
-		void eventPlayerOnInventoryUpdate(Player* player, Item* item, slots_t slot, bool equip);
+		void eventPlayerOnInventoryUpdate(Player* player, Item* item, Slots_t slot, bool equip);
 
 		// Monster
 		void eventMonsterOnDropLoot(Monster* monster, Container* corpse);
