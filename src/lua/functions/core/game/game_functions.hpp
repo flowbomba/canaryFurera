@@ -76,7 +76,10 @@ class GameFunctions final : LuaScriptInterface {
 
 				registerMethod(L, "Game", "reload", GameFunctions::luaGameReload);
 				
+				registerMethod(L, "Game", "pack", GameFunctions::luaTablePack);
+				
 				lua_register(L, "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
+				
 				
 
 
@@ -132,6 +135,7 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameReload(lua_State* L);
 			
 			static int luaIsScriptsInterface(lua_State* L);
+			static int luaTablePack(lua_State* L);
 
 			static int luaGameGetOfflinePlayer(lua_State* L);
 			static int luaGameHasEffect(lua_State* L);
