@@ -128,8 +128,10 @@ bool Events::loadFromXml() {
 				info.playerOnStorageUpdate = event;
 			} else if (methodName == "onRemoveCount") {
 				info.playerOnRemoveCount = event;
-			}else if (methodName == "onCombat") {
+			} else if (methodName == "onCombat") {
 				info.playerOnCombat = event;
+			} else if (methodName == "onInventoryUpdate") {
+				info.playerOnInventoryUpdate = event;	
 			} else {
 				SPDLOG_WARN("[Events::load] - Unknown player method: {}", methodName);
 			}
