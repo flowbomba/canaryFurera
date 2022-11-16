@@ -17,10 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/monsters/monsters.h"
 #include "lua/functions/creatures/monster/loot_functions.hpp"
+
 
 int LootFunctions::luaCreateLoot(lua_State* L) {
 	// Loot() will create a new loot item

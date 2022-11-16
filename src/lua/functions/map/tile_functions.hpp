@@ -20,6 +20,8 @@
 #ifndef SRC_LUA_FUNCTIONS_MAP_TILE_FUNCTIONS_HPP_
 #define SRC_LUA_FUNCTIONS_MAP_TILE_FUNCTIONS_HPP_
 
+#include <set>
+
 #include "lua/scripts/luascript.h"
 
 class TileFunctions final : LuaScriptInterface {

@@ -20,6 +20,7 @@
 #ifndef SRC_IO_IOMAPSERIALIZE_H_
 #define SRC_IO_IOMAPSERIALIZE_H_
 
+#include "database/database.h"
 #include "map/map.h"
 
 class IOMapSerialize

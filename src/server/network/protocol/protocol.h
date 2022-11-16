@@ -20,6 +20,8 @@
 #ifndef SRC_SERVER_NETWORK_PROTOCOL_PROTOCOL_H_
 #define SRC_SERVER_NETWORK_PROTOCOL_PROTOCOL_H_
 
+#include <zlib.h>
+
 #include "server/network/connection/connection.h"
 #include "config/configmanager.h"
 

@@ -20,6 +20,8 @@
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
 #define SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
 
+#include <set>
+
 #include "lua/scripts/luascript.h"
 #include "lua/functions/creatures/player/group_functions.hpp"
 #include "lua/functions/creatures/player/guild_functions.hpp"

@@ -17,11 +17,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/creature.h"
 #include "lua/creature/movement.h"
 #include "lua/functions/events/move_event_functions.hpp"
+
 
 int MoveEventFunctions::luaCreateMoveEvent(lua_State* L) {
 	// MoveEvent()

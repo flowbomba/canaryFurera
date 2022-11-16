@@ -17,13 +17,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
+
+#include <boost/range/adaptor/reversed.hpp>
 
 #include "game/game.h"
 #include "creatures/creature.h"
 #include "creatures/monsters/monster.h"
 #include "creatures/monsters/monsters.h"
 #include "lua/functions/creatures/monster/monster_functions.hpp"
+
 
 int MonsterFunctions::luaMonsterCreate(lua_State* L) {
 	// Monster(id or userdata)

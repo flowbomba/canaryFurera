@@ -20,6 +20,7 @@
 #ifndef SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
 #define SRC_CREATURES_APPEARANCE_MOUNTS_MOUNTS_H_
 
+#include <utility>
 #include <string>
 
 struct Mount

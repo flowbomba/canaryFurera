@@ -23,6 +23,7 @@
 #include "config/configmanager.h"
 #include "utils/utils_definitions.hpp"
 #include "declarations.hpp"
+#include "io/fileloader.h"
 #include "game/movement/position.h"
 
 struct Abilities {

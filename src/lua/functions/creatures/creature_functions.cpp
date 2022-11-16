@@ -7,7 +7,7 @@
  * Website: https://docs.opentibiabr.org/
 */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "game/game.h"
 #include "creatures/creature.h"

@@ -17,14 +17,16 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/npcs/spawns/spawn_npc.h"
-#include "creatures/npcs/npc.h"
 #include "game/game.h"
+#include "creatures/npcs/npc.h"
 #include "game/scheduling/scheduler.h"
-#include "lua/creature/events.h"
+
 #include "utils/pugicast.h"
+#include "lua/creature/events.h"
+
 
 static constexpr int32_t MINSPAWN_INTERVAL = 1000; // 1 second
 static constexpr int32_t MAXSPAWN_INTERVAL = 86400000; // 1 day

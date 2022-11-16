@@ -20,8 +20,8 @@
 #ifndef SRC_CREATURES_NPCS_SPAWNS_SPAWN_NPC_H_
 #define SRC_CREATURES_NPCS_SPAWNS_SPAWN_NPC_H_
 
-#include "game/movement/position.h"
 #include "items/tile.h"
+#include "game/movement/position.h"
 
 class Npc;
 class NpcType;

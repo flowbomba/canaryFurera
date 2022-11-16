@@ -17,13 +17,15 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/monsters/monsters.h"
+#include "creatures/monsters/monster.h"
 #include "creatures/combat/spells.h"
 #include "creatures/combat/combat.h"
-#include "game/game.h"
 #include "items/weapons/weapons.h"
+#include "game/game.h"
+
 #include "utils/pugicast.h"
 
 spellBlock_t::~spellBlock_t()

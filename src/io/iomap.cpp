@@ -17,9 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "io/iomap.h"
+
+#include "items/bed.h"
 #include "game/movement/teleport.h"
 
 /*

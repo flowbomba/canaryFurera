@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/players/vocations/vocation.h"
 
@@ -62,9 +62,9 @@ bool Vocations::loadFromXml()
 			voc.description = attr.as_string();
 		}
 
-		if ((attr = vocationNode.attribute("magicshield"))) {
-			voc.magicShield = attr.as_bool();
-		}
+    if ((attr = vocationNode.attribute("magicshield"))) {
+      voc.magicShield = attr.as_bool();
+    }
 
 		if ((attr = vocationNode.attribute("gaincap"))) {
 			voc.gainCap = pugi::cast<uint32_t>(attr.value()) * 100;
@@ -116,10 +116,6 @@ bool Vocations::loadFromXml()
 
 		if ((attr = vocationNode.attribute("fromvoc"))) {
 			voc.fromVocation = pugi::cast<uint32_t>(attr.value());
-		}
-
-		if ((attr = vocationNode.attribute("canCombat"))) {
-			voc.combat = attr.as_bool();
 		}
 
 		for (auto childNode : vocationNode.children()) {

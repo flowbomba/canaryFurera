@@ -17,15 +17,21 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
+#include <csignal>
 
 #include "creatures/appearance/mounts/mounts.h"
+#include "creatures/combat/spells.h"
+#include "creatures/monsters/monster.h"
 #include "database/databasetasks.h"
 #include "game/game.h"
 #include "game/scheduling/scheduler.h"
 #include "game/scheduling/tasks.h"
+#include "lua/creature/actions.h"
 #include "lua/creature/events.h"
 #include "lua/creature/raids.h"
+#include "lua/creature/talkaction.h"
+#include "lua/global/globalevent.h"
 #include "lua/scripts/lua_environment.hpp"
 #include "server/signals.h"
 

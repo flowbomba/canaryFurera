@@ -17,10 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
-#include "game/game.h"
 #include "game/scheduling/tasks.h"
+#include "game/game.h"
+
 
 Task* createTask(std::function<void (void)> f)
 {

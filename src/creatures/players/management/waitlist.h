@@ -20,6 +20,8 @@
 #ifndef SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
 #define SRC_CREATURES_PLAYERS_MANAGEMENT_WAITLIST_H_
 
+#include "creatures/players/player.h"
+
 struct WaitListInfo;
 
 class WaitingList

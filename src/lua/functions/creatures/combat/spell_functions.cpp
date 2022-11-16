@@ -17,11 +17,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/combat/spells.h"
 #include "creatures/players/vocations/vocation.h"
 #include "lua/functions/creatures/combat/spell_functions.hpp"
+
 
 int SpellFunctions::luaSpellCreate(lua_State* L) {
 	// Spell(words, name or id) to get an existing spell

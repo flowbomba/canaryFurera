@@ -17,11 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
-
+#include "otpch.h"
 #include "creatures/appearance/mounts/mounts.h"
 #include "game/game.h"
 #include "lua/functions/creatures/player/mount_functions.hpp"
+
 
 int MountFunctions::luaCreateMount(lua_State* L) {
 	// Mount(id or name)

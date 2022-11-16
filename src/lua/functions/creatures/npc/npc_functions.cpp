@@ -17,7 +17,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
+
+#include <boost/range/adaptor/reversed.hpp>
 
 #include "game/game.h"
 #include "creatures/creature.h"
@@ -538,7 +540,7 @@ int NpcFunctions::luaNpcSellItem(lua_State* L)
 		}
 	}
 
-	uint32_t itemsPurchased = 0;
+    uint32_t itemsPurchased = 0;
 	uint8_t backpacksPurchased = 0;
 	uint8_t internalCount = it.stackable ? 100 : 1;
 	auto remainingAmount = static_cast<uint32_t>(amount);

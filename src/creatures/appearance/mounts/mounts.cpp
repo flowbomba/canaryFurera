@@ -18,10 +18,11 @@
  */
 #include <string>
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/appearance/mounts/mounts.h"
 #include "game/game.h"
+
 #include "utils/pugicast.h"
 #include "utils/tools.h"
 

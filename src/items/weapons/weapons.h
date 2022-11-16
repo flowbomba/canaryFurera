@@ -27,6 +27,7 @@
 #include "utils/utils_definitions.hpp"
 #include "creatures/players/vocations/vocation.h"
 
+
 class Weapon;
 class WeaponMelee;
 class WeaponDistance;

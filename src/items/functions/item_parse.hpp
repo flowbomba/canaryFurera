@@ -24,6 +24,7 @@
 #include "declarations.hpp"
 #include "items/item.h"
 #include "items/items.h"
+#include "utils/pugicast.h"
 
 class ConditionDamage;
 

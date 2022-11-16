@@ -17,7 +17,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
+
+#include <boost/range/adaptor/reversed.hpp>
 
 #include "creatures/combat/spells.h"
 #include "creatures/creature.h"
@@ -1533,7 +1535,14 @@ int PlayerFunctions::luaPlayerSetBankBalance(lua_State* L) {
 		return 1;
 	}
 
-	player->setBankBalance(getNumber<uint64_t>(L, 2));
+	int64_t balance = getNumber<int64_t>(L, 2);
+	if (balance < 0) {
+		reportErrorFunc("Invalid bank balance value.");
+		lua_pushnil(L);
+		return 1;
+	}
+
+	player->setBankBalance(balance);
 	pushBoolean(L, true);
 	return 1;
 }
@@ -1579,7 +1588,7 @@ int PlayerFunctions::luaPlayerSetStorageValue(lua_State* L) {
 }
 
 int PlayerFunctions::luaPlayerAddItem(lua_State* L) {
-	// player:addItem(itemId, count = 1, canDropOnMap = true, subType = 1, slot = CONST_SLOT_WHEREEVER, tier = 0)
+	// player:addItem(itemId[, count = 1[, canDropOnMap = true[, subType = 1[, slot = CONST_SLOT_WHEREEVER]]]])
 	Player* player = getUserdata<Player>(L, 1);
 	if (!player) {
 		pushBoolean(L, false);
@@ -1626,7 +1635,6 @@ int PlayerFunctions::luaPlayerAddItem(lua_State* L) {
 
 	bool canDropOnMap = getBoolean(L, 4, true);
 	Slots_t slot = getNumber<Slots_t>(L, 6, CONST_SLOT_WHEREEVER);
-	auto tier = getNumber<uint8_t>(L, 7, 0);
 	for (int32_t i = 1; i <= itemCount; ++i) {
 		int32_t stackCount = subType;
 		if (it.stackable) {
@@ -1640,10 +1648,6 @@ int PlayerFunctions::luaPlayerAddItem(lua_State* L) {
 				lua_pushnil(L);
 			}
 			return 1;
-		}
-
-		if (tier > 0) {
-			item->setTier(tier);
 		}
 
 		ReturnValue ret = g_game().internalPlayerAddItem(player, item, canDropOnMap, slot);

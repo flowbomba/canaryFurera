@@ -17,10 +17,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "lua/creature/talkaction.h"
 #include "lua/functions/events/talk_action_functions.hpp"
+
 
 int TalkActionFunctions::luaCreateTalkAction(lua_State* L) {
 	// TalkAction(words)

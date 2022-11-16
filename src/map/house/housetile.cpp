@@ -17,13 +17,14 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "items/tile.h"
 #include "creatures/monsters/monster.h"
 #include "map/house/housetile.h"
 #include "map/house/house.h"
 #include "game/game.h"
+
 
 HouseTile::HouseTile(int32_t initX, int32_t initY, int32_t initZ, House* initHouse) :
 	DynamicTile(initX, initY, initZ), house(initHouse) {}
@@ -142,7 +143,7 @@ ReturnValue HouseTile::queryRemove(const Thing& thing, uint32_t count, uint32_t 
 	if (actor && g_configManager().getBoolean(ONLY_INVITED_CAN_MOVE_HOUSE_ITEMS)) {
 		Player* actorPlayer = actor->getPlayer();
 		if (!house->isInvited(actorPlayer)) {
-			return RETURNVALUE_PLAYERISNOTINVITED;
+			return RETURNVALUE_NOTPOSSIBLE;
 		}
 	}
 	return Tile::queryRemove(thing, count, flags);

@@ -29,20 +29,19 @@ class ItemClassification
 		id(id) {}
 	virtual ~ItemClassification() = default;
 
-	void addTier(uint8_t tierId, uint64_t tierPrice)
+	void addTier(uint8_t id, uint64_t price)
 	{
-		for (auto[tier, price] : tiers) {
-			if (tier == tierId) {
-				price = tierPrice;
+		for (std::pair<uint8_t, uint64_t> tier : tiers) {
+			if (tier.first == id) {
+				tier.second = price;
 				return;
 			}
 		}
 
-		tiers.push_back(std::pair<uint8_t, uint64_t>({ tierId, tierPrice }));
+		tiers.push_back(std::pair<uint8_t, uint64_t>({ id, price }));
 	}
 
 	uint8_t id;
-	// uint8_t = tier, uint64_t = price
 	std::vector<std::pair<uint8_t, uint64_t>> tiers;
 };
 

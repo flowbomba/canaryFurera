@@ -17,7 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "items/bed.h"
 #include "game/game.h"
@@ -259,7 +259,7 @@ int HouseFunctions::luaHouseGetTiles(lua_State* L) {
 	}
 
 	const auto& tiles = house->getTiles();
-	lua_newtable(L);
+	lua_createtable(L, tiles.size(), 0);
 
 	int index = 0;
 	for (Tile* tile : tiles) {

@@ -95,9 +95,9 @@ struct MarketStatistics {
 	}
 
 	uint32_t numTransactions;
-	uint64_t highestPrice;
+	uint32_t highestPrice;
 	uint64_t totalPrice;
-	uint64_t lowestPrice;
+	uint32_t lowestPrice;
 };
 
 #endif  // SRC_IO_IO_DEFINITIONS_HPP_

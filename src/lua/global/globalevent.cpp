@@ -17,12 +17,13 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "lua/global/globalevent.h"
 #include "utils/tools.h"
 #include "game/scheduling/scheduler.h"
 #include "utils/pugicast.h"
+
 
 GlobalEvents::GlobalEvents() :
 	scriptInterface("GlobalEvent Interface") {

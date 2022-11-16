@@ -17,9 +17,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "server/network/message/networkmessage.h"
+
 #include "items/containers/container.h"
 #include "creatures/creature.h"
 

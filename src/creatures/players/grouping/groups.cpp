@@ -17,9 +17,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/players/grouping/groups.h"
+
 #include "utils/pugicast.h"
 #include "utils/tools.h"
 

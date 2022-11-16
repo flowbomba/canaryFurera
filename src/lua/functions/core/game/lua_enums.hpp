@@ -20,10 +20,13 @@
 #ifndef SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_
 #define SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_
 
-#include "pch.hpp"
+#include "otpch.h"
 
 #include "creatures/players/account/account.hpp"
+#include "creatures/creature.h"
+#include "lua/creature/creatureevent.h"
 #include "declarations.hpp"
+#include "game/game.h"
 #include "lua/scripts/luascript.h"
 
 class LuaEnums final : LuaScriptInterface {
@@ -1035,7 +1038,6 @@ class LuaEnums final : LuaScriptInterface {
 			registerEnum(L, LIGHT_STATE_NIGHT);
 			registerEnum(L, LIGHT_STATE_SUNSET);
 			registerEnum(L, LIGHT_STATE_SUNRISE);
-			registerEnum(L, STORAGEVALUE_EMOTE);
 
 			// Webhook default colors
 			registerEnum(L, WEBHOOK_COLOR_ONLINE);
