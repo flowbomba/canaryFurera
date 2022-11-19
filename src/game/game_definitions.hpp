@@ -53,7 +53,6 @@ enum StoreState_t {
 	LIMITED_TIME
 };
 
-
 enum StoreService_t {
 	SERVICE_STANDARD = 0,
 	SERVICE_OUTFIT = 3,
