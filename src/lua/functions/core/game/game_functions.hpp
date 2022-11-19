@@ -73,6 +73,9 @@ class GameFunctions final : LuaScriptInterface {
 				registerMethod(L, "Game", "getClientVersion", GameFunctions::luaGameGetClientVersion);
 
 				registerMethod(L, "Game", "reload", GameFunctions::luaGameReload);
+				
+				registerMethod(L, "table", "pack", GameFunctions::luaTablePack);
+				lua_register(L, "isScriptsInterface", GameFunctions::luaIsScriptsInterface);
 
 				registerMethod(L, "Game", "hasDistanceEffect", GameFunctions::luaGameHasDistanceEffect);
 				registerMethod(L, "Game", "hasEffect", GameFunctions::luaGameHasEffect);
@@ -124,6 +127,9 @@ class GameFunctions final : LuaScriptInterface {
 			static int luaGameGetClientVersion(lua_State* L);
 
 			static int luaGameReload(lua_State* L);
+			
+			static int luaIsScriptsInterface(lua_State* L);
+			static int luaTablePack(lua_State* L);			
 
 			static int luaGameGetOfflinePlayer(lua_State* L);
 			static int luaGameHasEffect(lua_State* L);
