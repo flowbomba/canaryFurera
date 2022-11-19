@@ -24,9 +24,11 @@ onlyInvitedCanMoveHouseItems = true
 cleanProtectionZones = false
 
 -- Connection Config
+-- NOTE: allowOldProtocol can allow login on 10x protocol. (11.00)
 -- NOTE: maxPlayers set to 0 means no limit
 -- NOTE: MaxPacketsPerSeconds if you change you will be subject to bugs by WPE, keep the default value of 25
 ip = "127.0.0.1"
+allowOldProtocol = false
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172
@@ -52,9 +54,6 @@ freeDepotLimit = 2000
 premiumDepotLimit = 10000
 depotBoxes = 20
 
--- GameStore
-gamestoreByModules = true
-
 -- Prey system
 -- NOTE: preyRerollPricePerLevel: Price multiplier in gold coin for rerolling prey list.
 -- NOTE: preySelectListPrice: Price to manually select creature on list and to lock prey slot.
@@ -64,8 +63,10 @@ gamestoreByModules = true
 preySystemEnabled = true
 preyFreeThirdSlot = false
 preyRerollPricePerLevel = 200
-preySelectListPrice = 5
-preyBonusRerollPrice = 1
+preySelectListPrice = 1
+preyBonusRerollPrice = 2
+preyBonusPercentMin = 5
+preyBonusPercentMax = 40
 preyBonusTime = 2 * 60 * 60
 preyFreeRerollTime = 20 * 60 * 60
 
@@ -77,12 +78,9 @@ taskHuntingSystemEnabled = true
 taskHuntingFreeThirdSlot = false
 taskHuntingLimitedTasksExhaust = 20 * 60 * 60
 taskHuntingRerollPricePerLevel = 200
-taskHuntingSelectListPrice = 5
-taskHuntingBonusRerollPrice = 1
+taskHuntingSelectListPrice = 1
+taskHuntingBonusRerollPrice = 2
 taskHuntingFreeRerollTime = 20 * 60 * 60
-
--- Forge system
-forgeMaxItemTier = 10
 
 -- NOTE: Access only for Premium Account
 onlyPremiumAccount = false

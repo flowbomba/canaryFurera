@@ -15,10 +15,8 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": {
           "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-          "type": "FILEPATH"
+           "type": "FILEPATH"
         },
-        "BUILD_STATIC_LIBRARY": "ON",
-        "VCPKG_TARGET_TRIPLET": "x64-windows-static",
         "CMAKE_BUILD_TYPE": "RelWithDebInfo",
         "OPTIONS_ENABLE_SCCACHE": "ON"
       },
@@ -46,7 +44,7 @@
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": {
           "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-          "type": "FILEPATH"
+           "type": "FILEPATH"
         },
         "CMAKE_BUILD_TYPE": "RelWithDebInfo",
         "OPTIONS_ENABLE_CCACHE": "ON"
@@ -63,9 +61,7 @@
       "displayName": "Windows - Release + ASAN",
       "description": "Release Mode with ASAN",
       "cacheVariables": {
-        "ASAN_ENABLED": "ON",
-        "BUILD_STATIC_LIBRARY": "OFF",
-        "VCPKG_TARGET_TRIPLET": "x64-windows"
+        "ASAN_ENABLED": "ON"
       },
       "architecture": {
         "value": "x64",
@@ -80,9 +76,7 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "DEBUG_LOG": "ON",
-        "ASAN_ENABLED": "ON",
-        "BUILD_STATIC_LIBRARY": "OFF",
-        "VCPKG_TARGET_TRIPLET": "x64-windows"
+        "ASAN_ENABLED": "ON"
       },
       "architecture": {
         "value": "x64",
