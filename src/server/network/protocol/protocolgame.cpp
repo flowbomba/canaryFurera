@@ -2755,9 +2755,11 @@ void ProtocolGame::parseMarketBrowse(NetworkMessage &msg)
 		player->sendMarketEnter(player->getLastDepotId());
 		addGameTask(&Game::playerBrowseMarket, player->getID(), itemId, tier);
 	} else {
-		addGameTask(&Game::playerBrowseMarket, player->getID(), browseId, tier);
+	
+		addGameTask(&Game::playerBrowseMarket, player->getID(), itemId, tier);
 	}
 }
+
 
 void ProtocolGame::parseMarketCreateOffer(NetworkMessage &msg)
 {
