@@ -87,8 +87,8 @@ class Vocation
 			return attackSpeed;
 		}
 
-		uint32_t getAttackSpeed() const {
-			return attackSpeed / g_configManager().getFloat(RATE_ATTACK_SPEED);
+		uint32_t getAttackSpeed() const {			
+			return (attackSpeed - (attackSpeed * getSkillLevel(SKILL_FIST) / 100));
 		}
 
 		uint32_t getBaseSpeed() const {
