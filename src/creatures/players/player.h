@@ -180,6 +180,12 @@ class Player final : public Creature, public Cylinder
 			}
 		}
 
+		void sendForgingData() const {
+			if (client) {
+				client->sendForgingData();
+			}
+		}
+
 		bool addOfflineTrainingTries(skills_t skill, uint64_t tries);
 
 		void addOfflineTrainingTime(int32_t addTime) {
@@ -537,7 +543,7 @@ class Player final : public Creature, public Cylinder
 		void removeMessageBuffer();
 
 		bool canSellImbuedItem(Item *item, bool ignoreImbued);
-		bool removeItemOfType(uint16_t itemId, uint32_t amount, int32_t subType, bool ignoreEquipped = false, bool ignoreImbued = true) const;
+		bool removeItemOfType(uint16_t itemId, uint32_t amount, int32_t subType, bool ignoreEquipped = false) const;
 
 		void addItemOnStash(uint16_t itemId, uint32_t amount) {
 			auto it = stashItems.find(itemId);
@@ -1223,11 +1229,6 @@ class Player final : public Creature, public Cylinder
 				client->sendTextWindow(windowTextId, item, maxlen, canWrite);
 			}
 		}
-		void sendTextWindow(uint32_t itemId, const std::string& text) const {
-			if (client) {
-				client->sendTextWindow(windowTextId, itemId, text);
-			}
-		}
 		void sendToChannel(const Creature* creature, SpeakClasses type,
                            const std::string& text, uint16_t channelId) const {
 			if (client) {
@@ -1239,7 +1240,7 @@ class Player final : public Creature, public Cylinder
 				client->sendShop(npc);
 			}
 		}
-		void sendSaleItemList(const std::map<uint32_t, uint32_t>& inventoryMap) const {
+		void sendSaleItemList(const std::map<uint16_t, uint16_t>& inventoryMap) const {
 			if (client && shopOwner) {
 				client->sendSaleItemList(shopOwner->getShopItemVector(), inventoryMap);
 			}
@@ -1256,10 +1257,9 @@ class Player final : public Creature, public Cylinder
 				client->sendMarketLeave();
 			}
 		}
-		void sendMarketBrowseItem(uint16_t itemId, const MarketOfferList& buyOffers,
-                                  const MarketOfferList& sellOffers) const {
+		void sendMarketBrowseItem(uint16_t itemId, const MarketOfferList& buyOffers, const MarketOfferList& sellOffers, uint8_t tier) const {
 			if (client) {
-				client->sendMarketBrowseItem(itemId, buyOffers, sellOffers);
+				client->sendMarketBrowseItem(itemId, buyOffers, sellOffers, tier);
 			}
 		}
 		void sendMarketBrowseOwnOffers(const MarketOfferList& buyOffers,
@@ -1274,9 +1274,9 @@ class Player final : public Creature, public Cylinder
 				client->sendMarketBrowseOwnHistory(buyOffers, sellOffers);
 			}
 		}
-		void sendMarketDetail(uint16_t itemId) const {
+		void sendMarketDetail(uint16_t itemId, uint8_t tier) const {
 			if (client) {
-				client->sendMarketDetail(itemId);
+				client->sendMarketDetail(itemId, tier);
 			}
 		}
 		void sendMarketAcceptOffer(const MarketOfferEx& offer) const {
@@ -2048,7 +2048,7 @@ class Player final : public Creature, public Cylinder
 			lastDepotSearchInteraction = OTSYS_TIME();
 		}
 
-		std::pair<std::vector<Item*>, std::map<uint16_t, uint32_t>> requestLockerItems(DepotLocker *depotLocker) const;
+		std::pair<std::vector<Item*>, std::map<uint16_t, std::map<uint8_t, uint32_t>>> requestLockerItems(DepotLocker *depotLocker, bool sendToClient = false, uint8_t tier = 0) const;
 
 	private:
 		std::forward_list<Condition*> getMuteConditions() const;
@@ -2106,9 +2106,18 @@ class Player final : public Creature, public Cylinder
 		size_t getLastIndex() const override;
 		uint32_t getItemTypeCount(uint16_t itemId, int32_t subType = -1) const override;
 		void stashContainer(StashContainerList itemDict);
+		ItemsTierCountList getInventoryItemsId() const;
+
+		// Get specific inventory item from itemid
+		std::vector<Item*> getInventoryItemsFromId(uint16_t itemId, bool ignore = true) const;
+
+		// This get all player inventory items
+		std::vector<Item*> getAllInventoryItems() const;
+		// This function is a override function of base class		
 		std::map<uint32_t, uint32_t>& getAllItemTypeCount(std::map<uint32_t,
                                       uint32_t>& countMap) const override;
-		std::map<uint16_t, uint16_t> getInventoryItemsId() const;
+		// Function from player class with correct type sizes (uint16_t)
+		std::map<uint16_t, uint16_t>& getAllSaleItemIdAndCount(std::map<uint16_t, uint16_t> & countMap) const;
 		void getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t>& countMap) const;
 		Thing* getThing(size_t index) const override;
 
@@ -2360,6 +2369,8 @@ class Player final : public Creature, public Cylinder
 		bool isDead() const {
 			return dead;
 		}
+
+		void triggerMomentum();
 
 		friend class Game;
 		friend class Npc;
