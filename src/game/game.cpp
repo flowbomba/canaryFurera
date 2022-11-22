@@ -7498,7 +7498,6 @@ bool checkCanInitCreateMarketOffer(const Player *player, uint8_t type, const Ite
 
 	if (g_configManager().getBoolean(MARKET_PREMIUM) && !player->isPremium()) {
 		player->sendTextMessage(MESSAGE_MARKET, "Only premium accounts may create offers for that object.");
-		offerStatus = "Only premium can create offers";
 		return false;
 	}
 
