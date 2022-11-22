@@ -4247,7 +4247,6 @@ void ProtocolGame::sendMarketEnter(uint32_t depotId)
 			totalItemsCount++;			
 		}
 		
-		msg.add<uint16_t>(static_cast<uint16_t>(std::min<uint32_t>(std::numeric_limits<uint16_t>::max(), it->second)));
 	}
 
 	msg.setBufferPosition(totalItemsCountPosition);
