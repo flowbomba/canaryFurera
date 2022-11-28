@@ -1515,7 +1515,7 @@ std::string Item::parseImbuementDescription(const Item* item)
 			  << std::setw(2) << std::setfill('0') << hours << ":"
 			  << std::setw(2) << std::setfill('0') << (minutes % 60) << "h";
 		}
-		s << ").";
+		s << ")";
 	}
 
 	return s.str();
@@ -1528,11 +1528,11 @@ std::string Item::parseClassificationDescription(const Item* item) {
 		if (item->getTier() != 0) {
 			string << " (";
 			if (Item::items[item->getID()].weaponType != WEAPON_NONE) {
-				string << item->getFatalChance() << "% Onslaught).";
+				string << item->getFatalChance() << "% Onslaught)";
 			} else if (g_game().getObjectCategory(item) == OBJECTCATEGORY_HELMETS) {
-				string << item->getMomentumChance() << "% Momentum).";
+				string << item->getMomentumChance() << "% Momentum)";
 			} else if (g_game().getObjectCategory(item) == OBJECTCATEGORY_ARMORS) {
-				string << item->getDodgeChance() << "% Ruse).";
+				string << item->getDodgeChance() << "% Ruse)";
 			}
 		}
 	}
