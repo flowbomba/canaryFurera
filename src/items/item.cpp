@@ -1701,7 +1701,7 @@ std::string Item::parseShowAttributesDescription(const Item *item, const uint16_
 					itemDescription << ", ";
 				}
 
-				itemDescription << "speed " << std::showpos << (itemType.abilities->speed >> 1) << std::noshowpos;
+				itemDescription << "speed: " << std::showpos << (itemType.abilities->speed >> 1) << std::noshowpos;
 			}
 		}
 
