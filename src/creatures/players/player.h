@@ -2341,10 +2341,12 @@ class Player final : public Creature, public Cylinder
 		}
 
 		bool isPromoted() const;
-
+		
 		uint32_t getAttackSpeed() const {
-			return (vocation->getAttackSpeed() - (vocation->getAttackSpeed() * getSkillLevel(SKILL_FIST) / 100));
-		}
+    	uint32_t skillLevel = getSkillLevel(SKILL_FIST);
+		skillLevel = std::min(skillLevel, 90);
+		return (vocation->getAttackSpeed() - (vocation->getAttackSpeed() * skillLevel / 100));
+		}	
 
 		static double_t getPercentLevel(uint64_t count, uint64_t nextLevelCount);
 		double getLostPercent() const;
